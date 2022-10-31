@@ -1,6 +1,14 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
+
+import Container from 'components/layout/Container';
+import styled from 'styled-components';
+
+const StyledBody = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,9 +20,9 @@ function App() {
    */
 
   return (
-    <div className='App'>
-      <h1>Hello world</h1>
-    </div>
+    <StyledBody>
+      <Container />
+    </StyledBody>
   );
 }
 
