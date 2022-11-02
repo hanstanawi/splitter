@@ -1,18 +1,12 @@
-import { useState } from 'react';
+import Calculator from 'components/calculator';
+import HeaderTitle from 'components/layout/HeaderTitle';
 
-import Container from 'components/layout/Container';
-import styled from 'styled-components';
-
-const StyledBody = styled.div`
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { Container } from 'components/layout/Container';
+import { ThemeProvider } from 'styled-components';
+import { globalTheme } from 'styles/global-theme.styled';
+import { GlobalStyles } from 'styles/global.styled';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   /**
    * const totalTip = totalPrice * tipPercentage
    * const tipPerPerson = totalTip / totalPeople
@@ -20,9 +14,13 @@ function App() {
    */
 
   return (
-    <StyledBody>
-      <Container />
-    </StyledBody>
+    <ThemeProvider theme={globalTheme}>
+      <GlobalStyles />
+      <Container>
+        <HeaderTitle />
+        <Calculator />
+      </Container>
+    </ThemeProvider>
   );
 }
 

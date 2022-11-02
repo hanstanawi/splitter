@@ -1,0 +1,16 @@
+import React from 'react';
+import logo from 'assets/images/logo.svg';
+import styled from 'styled-components';
+
+const StyledTitle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export default function HeaderTitle() {
+  return (
+    <StyledTitle>
+      <img src={logo} alt="logo" />
+    </StyledTitle>
+  );
+}

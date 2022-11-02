@@ -1,27 +1,13 @@
 import styled from 'styled-components';
 
-const StyledContainer = styled.div`
+export const Container = styled.div`
+  max-width: 100%;
+  width: 1000px;
+  height: 100vh;
+  max-height: 100%;
   display: flex;
-  background-color: hsl(0, 0%, 100%);
-
-  width: 75%;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  border: 1px solid black;
-
-  h1 {
-    color: #000;
-    font-size: 2rem;
-    font-family: sans-serif;
-  }
+  align-items: center;
+  margin: 0 auto;
 `;
-
-function Container() {
-  return (
-    <StyledContainer>
-      <h1>Hello</h1>
-    </StyledContainer>
-  );
-}
-
-export default Container;
