@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+const Layout = styled.div`
   max-width: 100%;
   width: 1000px;
   height: 100vh;
@@ -11,3 +11,5 @@ export const Container = styled.div`
   align-items: center;
   margin: 0 auto;
 `;
+
+export default Layout;

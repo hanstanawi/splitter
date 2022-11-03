@@ -1,51 +1,30 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useMemo,
-  useReducer,
-} from 'react';
+import { createContext, useMemo, useReducer, ReactNode } from 'react';
 import { ICalculatorContext } from 'types/calculator.type';
+import calculatorReducer, { initialState } from './calculator-reducer';
 
-// TODO: Refactor these functions and const as separate files
-const CalculatorContext = createContext<ICalculatorContext>({
+// export const CalculatorContext = createContext<CalculatorContextType>([
+//   {
+//     billValue: 0,
+//     peopleQty: 0,
+//     tip: 0,
+//   },
+//   () => {},
+// ]);
+
+export const CalculatorContext = createContext<ICalculatorContext>({
   billValue: 0,
   peopleQty: 0,
   tip: 0,
   dispatch: () => {},
 });
 
-export function useCalculator() {
-  return useContext(CalculatorContext);
-}
-
-const initialState = {
-  billValue: 0,
-  tip: 0,
-  peopleQty: 0,
+type CalculatorContextProviderProps = {
+  children: ReactNode;
 };
 
-export type ActionType =
-  | { type: 'SET_BILL_VALUE'; payload: number }
-  | { type: 'SET_TIP_PERCENTAGE'; payload: number }
-  | { type: 'SET_PEOPLE_QUANTIYT'; payload: number };
-
-export type CalculatorState = typeof initialState;
-
-function calculatorReducer(state: typeof initialState, action: ActionType) {
-  switch (action.type) {
-    case 'SET_BILL_VALUE': {
-      return {
-        ...state,
-        billValue: action.payload,
-      };
-    }
-    default:
-      return state;
-  }
-}
-
-function CalculatorContextProvider({ children }: { children: ReactNode }) {
+function CalculatorContextProvider({
+  children,
+}: CalculatorContextProviderProps) {
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
 
   const providerValue = useMemo(
@@ -59,7 +38,10 @@ function CalculatorContextProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <CalculatorContext.Provider value={providerValue}>
+    <CalculatorContext.Provider
+      // value={useReducer(calculatorReducer, initialState)}
+      value={providerValue}
+    >
       {children}
     </CalculatorContext.Provider>
   );

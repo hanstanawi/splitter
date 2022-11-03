@@ -4,17 +4,16 @@ import CalculatorContainer from 'components/calculator/CalculatorContainer';
 import HeaderTitle from 'components/layout/HeaderTitle';
 import globalTheme from 'styles/global-theme.styled';
 import GlobalStyles from 'styles/global.styled';
-
-import { Container } from 'components/layout/Layout';
+import Layout from 'components/layout/Layout';
 
 function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <GlobalStyles />
-      <Container>
+      <Layout>
         <HeaderTitle />
         <CalculatorContainer />
-      </Container>
+      </Layout>
     </ThemeProvider>
   );
 }

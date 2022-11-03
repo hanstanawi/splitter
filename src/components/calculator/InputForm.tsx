@@ -1,6 +1,7 @@
-import { useCalculator } from 'context/calculator-context';
-import { ChangeEvent } from 'react';
 import styled from 'styled-components';
+import { ChangeEvent } from 'react';
+
+import { useCalculator } from 'hooks/use-calculator';
 
 const StyledInputForm = styled.div`
   height: 100%;
