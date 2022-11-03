@@ -5,6 +5,10 @@ import styled from 'styled-components';
 const StyledTitle = styled.div`
   display: flex;
   justify-content: center;
+
+  img {
+    width: 100%;
+  }
 `;
 
 export default function HeaderTitle() {
