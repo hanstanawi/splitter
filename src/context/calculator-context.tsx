@@ -1,15 +1,7 @@
-import { createContext, useMemo, useReducer, ReactNode } from 'react';
+import { useMemo, useReducer, ReactNode } from 'react';
+import { createContext } from 'use-context-selector';
 import { ICalculatorContext } from 'types/calculator.type';
 import calculatorReducer, { initialState } from './calculator-reducer';
-
-// export const CalculatorContext = createContext<CalculatorContextType>([
-//   {
-//     billValue: 0,
-//     peopleQty: 0,
-//     tip: 0,
-//   },
-//   () => {},
-// ]);
 
 export const CalculatorContext = createContext<ICalculatorContext>({
   billValue: 0,
@@ -22,11 +14,10 @@ type CalculatorContextProviderProps = {
   children: ReactNode;
 };
 
-function CalculatorContextProvider({
+export function CalculatorContextProvider({
   children,
 }: CalculatorContextProviderProps) {
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
-
   const providerValue = useMemo(
     () => ({
       billValue: state.billValue,
@@ -38,13 +29,8 @@ function CalculatorContextProvider({
   );
 
   return (
-    <CalculatorContext.Provider
-      // value={useReducer(calculatorReducer, initialState)}
-      value={providerValue}
-    >
+    <CalculatorContext.Provider value={providerValue}>
       {children}
     </CalculatorContext.Provider>
   );
 }
-
-export default CalculatorContextProvider;

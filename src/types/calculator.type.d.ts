@@ -1,5 +1,4 @@
 import { ActionType } from 'context/calculator-context';
-import { CalculatorState } from 'context/calculator-reducer';
 import { Dispatch } from 'react';
 
 interface ICalculatorContext {

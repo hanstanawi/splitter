@@ -1,4 +1,4 @@
-import { useCalculator } from 'hooks/use-calculator';
+import { useBillValue } from 'hooks/calculator.hooks';
 import styled from 'styled-components';
 
 const StyledResult = styled.div`
@@ -11,9 +11,7 @@ const StyledResult = styled.div`
 `;
 
 function Result() {
-  const { billValue } = useCalculator();
-
-  // const { billValue } = state;
+  const billValue = useBillValue();
 
   return <StyledResult>{billValue}</StyledResult>;
 }

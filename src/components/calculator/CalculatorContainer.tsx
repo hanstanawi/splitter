@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+import { CalculatorContextProvider } from 'context/calculator-context';
 import { Card } from 'components/ui/Card';
-import CalculatorContextProvider from 'context/calculator-context';
 import InputForm from './InputForm';
 import Result from './Result';
 
