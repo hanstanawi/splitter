@@ -7,12 +7,12 @@ export const initialState = {
 export type ActionType =
   | { type: 'SET_BILL_VALUE'; payload: number }
   | { type: 'SET_TIP_PERCENTAGE'; payload: number }
-  | { type: 'SET_PEOPLE_QUANTIYT'; payload: number };
+  | { type: 'SET_PEOPLE_QUANTITY'; payload: number };
 
 export type CalculatorState = typeof initialState;
 
 export default function calculatorReducer(
-  state: typeof initialState,
+  state: CalculatorState,
   action: ActionType
 ) {
   switch (action.type) {
@@ -20,6 +20,12 @@ export default function calculatorReducer(
       return {
         ...state,
         billValue: action.payload,
+      };
+    }
+    case 'SET_TIP_PERCENTAGE': {
+      return {
+        ...state,
+        tip: action.payload,
       };
     }
     default:

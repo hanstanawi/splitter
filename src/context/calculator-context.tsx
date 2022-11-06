@@ -18,6 +18,7 @@ export function CalculatorContextProvider({
   children,
 }: CalculatorContextProviderProps) {
   const [state, dispatch] = useReducer(calculatorReducer, initialState);
+
   const providerValue = useMemo(
     () => ({
       billValue: state.billValue,

@@ -1,4 +1,4 @@
-import { useBillValue } from 'hooks/calculator.hooks';
+import { useBillValue, useTip } from 'hooks/calculator.hooks';
 import styled from 'styled-components';
 
 const StyledResult = styled.div`
@@ -12,8 +12,14 @@ const StyledResult = styled.div`
 
 function Result() {
   const billValue = useBillValue();
+  const tipValue = useTip();
 
-  return <StyledResult>{billValue}</StyledResult>;
+  return (
+    <StyledResult>
+      <div>{billValue}</div>
+      <div>{tipValue}</div>
+    </StyledResult>
+  );
 }
 
 export default Result;
