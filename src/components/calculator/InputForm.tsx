@@ -3,10 +3,15 @@ import { ChangeEvent } from 'react';
 
 import { useContextDispatch } from 'hooks/calculator.hooks';
 import Input from 'components/ui/Input';
+import TipSelection from './tips/TipSelection';
 
 const StyledInputForm = styled.div`
   height: 100%;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem 0;
 
   .bill-input {
     font-size: 1rem;
@@ -22,13 +27,10 @@ const StyledInputForm = styled.div`
 function BillInput() {
   const dispatch = useContextDispatch();
   const billValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = Number(e.target.value);
-    if (inputValue > 0) {
-      dispatch({
-        type: 'SET_BILL_VALUE',
-        payload: inputValue,
-      });
-    }
+    dispatch({
+      type: 'SET_BILL_VALUE',
+      payload: Number(e.target.value),
+    });
   };
 
   return (
@@ -38,7 +40,29 @@ function BillInput() {
         type="number"
         name="bill"
         onChange={billValueChangeHandler}
-        defaultValue={0}
+        defaultValue="0"
+      />
+    </div>
+  );
+}
+
+function PeopleQuantityInput() {
+  const dispatch = useContextDispatch();
+  const peopleQuantityChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: 'SET_PEOPLE_QUANTITY',
+      payload: Number(e.target.value),
+    });
+  };
+
+  return (
+    <div className="bill-input">
+      <label htmlFor="bill">Number of People</label>
+      <Input
+        type="number"
+        name="people"
+        onChange={peopleQuantityChangeHandler}
+        defaultValue="0"
       />
     </div>
   );
@@ -50,8 +74,9 @@ function InputForm() {
       {/* Bill Input */}
       <BillInput />
       {/* Tip Selection */}
-      <div />
+      <TipSelection />
       {/* Number of People */}
+      <PeopleQuantityInput />
     </StyledInputForm>
   );
 }
