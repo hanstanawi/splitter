@@ -7,12 +7,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Space Mono', monospace;
   }
 
   body {
     background-color: ${({ theme }) => theme.colors.body};
     max-height: 100vh;
-    font-family: 'Space Mono', monospace;
     font-size: 24px;
   }
 `;
