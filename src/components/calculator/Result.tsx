@@ -1,5 +1,13 @@
-import { useBillValue, useTip } from 'hooks/calculator.hooks';
 import styled from 'styled-components';
+import {
+  useBillValue,
+  usePeopleQuantity,
+  useTip,
+} from 'hooks/calculator.hooks';
+import {
+  calculateTipPerPerson,
+  calculateTotalPricePerPerson,
+} from 'helpers/math.helpers';
 
 const StyledResult = styled.div`
   background-color: ${({ theme }) => theme.colors.darkPrimary};
@@ -13,11 +21,19 @@ const StyledResult = styled.div`
 function Result() {
   const billValue = useBillValue();
   const tipValue = useTip();
+  const peopleQty = usePeopleQuantity();
+
+  const tipPerPerson = calculateTipPerPerson(billValue, tipValue, peopleQty);
+  const totalPerPerson = calculateTotalPricePerPerson(
+    tipPerPerson,
+    billValue,
+    peopleQty
+  );
 
   return (
     <StyledResult>
-      <div>{billValue}</div>
-      <div>{tipValue}</div>
+      <div>Tip Per Person: {tipPerPerson.toFixed(2)}</div>
+      <div>Total Per Person: {totalPerPerson.toFixed(2)}</div>
     </StyledResult>
   );
 }

@@ -28,6 +28,12 @@ export default function calculatorReducer(
         tip: action.payload,
       };
     }
+    case 'SET_PEOPLE_QUANTITY': {
+      return {
+        ...state,
+        peopleQty: action.payload,
+      };
+    }
     default:
       return state;
   }
