@@ -3,8 +3,11 @@ export function calculateTipPerPerson(
   tipPercentage: number,
   peopleQty: number
 ): number {
-  const totalTip = (totalPrice / peopleQty) * (tipPercentage / 100);
-  return totalTip;
+  const result = (totalPrice / peopleQty) * (tipPercentage / 100);
+  if (!result) {
+    return 0;
+  }
+  return result;
 }
 
 export function calculateTotalPricePerPerson(
@@ -12,5 +15,9 @@ export function calculateTotalPricePerPerson(
   totalPrice: number,
   peopleQty: number
 ): number {
-  return totalPrice / peopleQty + tipPerPerson;
+  const result = totalPrice / peopleQty + tipPerPerson;
+  if (!result) {
+    return 0;
+  }
+  return result;
 }
