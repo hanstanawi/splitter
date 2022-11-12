@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import TipPercentageButton from './TipPercentageButton';
 
@@ -12,13 +13,15 @@ const StyledTipSelection = styled.div`
   .tip-selection {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 `;
 
 const tips = [5, 10, 15, 20, 25];
 
 function TipSelection() {
+  const [isCustomTip, setIsCustomTip] = useState(false);
+
   return (
     <StyledTipSelection>
       <p className="tip-label">Select Tip %</p>

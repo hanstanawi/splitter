@@ -5,7 +5,7 @@ type StyledTipPercentageButtonProps = {
   selected: boolean;
 };
 
-const StyledTipPercentageButton = styled.button<StyledTipPercentageButtonProps>`
+export const StyledTipPercentageButton = styled.button<StyledTipPercentageButtonProps>`
   background-color: ${({ theme, selected }) => {
     return selected ? theme.colors.primary : theme.colors.darkPrimary;
   }};
