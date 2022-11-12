@@ -3,7 +3,7 @@ import { ChangeEvent } from 'react';
 
 import { useContextDispatch } from 'hooks/calculator.hooks';
 import Input from 'components/ui/Input';
-import TipSelection from './tips/TipSelection';
+import TipSelection from './tip/TipSelection';
 
 const StyledInputForm = styled.div`
   height: 100%;
@@ -18,7 +18,7 @@ const StyledInputForm = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 0.5rem;
+    row-gap: 0.25rem;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.greyCyan};
   }
@@ -49,10 +49,12 @@ function BillInput() {
 function PeopleQuantityInput() {
   const dispatch = useContextDispatch();
   const peopleQuantityChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: 'SET_PEOPLE_QUANTITY',
-      payload: Number(e.target.value),
-    });
+    if (Number(e.target.value) > 0) {
+      dispatch({
+        type: 'SET_PEOPLE_QUANTITY',
+        payload: Number(e.target.value),
+      });
+    }
   };
 
   return (
@@ -62,7 +64,7 @@ function PeopleQuantityInput() {
         type="number"
         name="people"
         onChange={peopleQuantityChangeHandler}
-        defaultValue="0"
+        defaultValue={1}
       />
     </div>
   );
