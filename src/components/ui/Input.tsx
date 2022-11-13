@@ -8,9 +8,9 @@ const Input = styled.input`
   border-color: transparent;
   text-align: right;
 
-  &:hover {
+  /* &:hover {
     border-top: ${({ theme }) => theme.colors.primary};
-  }
+  } */
 `;
 
 export default Input;

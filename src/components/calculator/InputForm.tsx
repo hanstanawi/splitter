@@ -1,8 +1,13 @@
 import styled from 'styled-components';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 
-import { useContextDispatch } from 'hooks/calculator.hooks';
+import {
+  useBillValue,
+  useContextDispatch,
+  usePeopleQuantity,
+} from 'hooks/calculator.hooks';
 import Input from 'components/ui/Input';
+import { validateIsValidNumber } from 'helpers/string.helpers';
 import TipSelection from './tip/TipSelection';
 
 const StyledInputForm = styled.div`
@@ -25,46 +30,67 @@ const StyledInputForm = styled.div`
 `;
 
 function BillInput() {
+  const billValue = useBillValue();
   const dispatch = useContextDispatch();
   const billValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch({
-      type: 'SET_BILL_VALUE',
-      payload: Number(e.target.value),
-    });
-  };
-
-  return (
-    <div className="bill-input">
-      <label htmlFor="bill">Bill</label>
-      <Input
-        type="number"
-        name="bill"
-        onChange={billValueChangeHandler}
-        defaultValue="0"
-      />
-    </div>
-  );
-}
-
-function PeopleQuantityInput() {
-  const dispatch = useContextDispatch();
-  const peopleQuantityChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) > 0) {
+    const inputText = e.target.value;
+    const isValidNumber = validateIsValidNumber(inputText);
+    if (isValidNumber) {
       dispatch({
-        type: 'SET_PEOPLE_QUANTITY',
-        payload: Number(e.target.value),
+        type: 'SET_BILL_VALUE',
+        payload: Number(inputText),
       });
     }
   };
 
   return (
     <div className="bill-input">
-      <label htmlFor="bill">Number of People</label>
+      <label htmlFor="bill">Bill</label>
       <Input
-        type="number"
+        type="text"
+        name="bill"
+        value={billValue}
+        onChange={billValueChangeHandler}
+      />
+    </div>
+  );
+}
+
+function PeopleQuantityInput() {
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useContextDispatch();
+  const peopleQuantity = usePeopleQuantity();
+
+  const peopleQuantityChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputText = e.target.value;
+    const isValidNumber = validateIsValidNumber(inputText);
+    if (isValidNumber) {
+      const numberInput = Number(e.target.value);
+      if (numberInput > 0) {
+        dispatch({
+          type: 'SET_PEOPLE_QUANTITY',
+          payload: numberInput,
+        });
+        setError(null);
+      } else {
+        dispatch({
+          type: 'SET_PEOPLE_QUANTITY',
+          payload: numberInput,
+        });
+        setError(`Can't be zero`);
+      }
+    }
+  };
+
+  return (
+    <div className="bill-input">
+      <label htmlFor="bill">Number of People</label>
+      {error && <p>{error}</p>}
+      <Input
+        type="text"
         name="people"
         onChange={peopleQuantityChangeHandler}
-        defaultValue={1}
+        value={peopleQuantity}
       />
     </div>
   );

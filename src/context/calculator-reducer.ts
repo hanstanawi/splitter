@@ -1,7 +1,7 @@
 export const initialState = {
   billValue: 0,
   tip: 0,
-  peopleQty: 1,
+  peopleQty: 0,
 };
 
 export type ActionType =
