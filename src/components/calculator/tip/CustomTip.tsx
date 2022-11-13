@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { StyledTipPercentageButton } from './TipPercentageButton';
 
 const StyledCustomTip = styled.button`
   background-color: ${({ theme }) => {
-    return selected ? theme.colors.primary : theme.colors.darkPrimary;
+    return theme.colors.lightGrey;
   }};
   color: ${({ theme }) => {
-    return selected ? theme.colors.darkPrimary : theme.colors.white;
+    return theme.colors.primary;
   }};
   width: 100%;
   height: 100%;
@@ -22,11 +21,7 @@ const StyledCustomTip = styled.button`
 `;
 
 function CustomTip() {
-  return (
-    <StyledTipPercentageButton type="button">
-      <p>{`${value}%`}</p>
-    </StyledTipPercentageButton>
-  );
+  return <StyledCustomTip type="button">Custom</StyledCustomTip>;
 }
 
 export default CustomTip;

@@ -23,6 +23,11 @@ export const StyledTipPercentageButton = styled.button<StyledTipPercentageButton
   font-size: 1.25rem;
   padding: 0.5rem 0;
   border-radius: 0.25rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.darkPrimary};
+  }
 `;
 
 type TipPercentageCardProps = {

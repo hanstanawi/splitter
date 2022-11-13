@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import CustomTip from './CustomTip';
 import TipPercentageButton from './TipPercentageButton';
 
 const StyledTipSelection = styled.div`
@@ -17,7 +18,7 @@ const StyledTipSelection = styled.div`
   }
 `;
 
-const tips = [5, 10, 15, 20, 25];
+const tips = [5, 10, 15, 25, 50];
 
 function TipSelection() {
   const [isCustomTip, setIsCustomTip] = useState(false);
@@ -29,6 +30,7 @@ function TipSelection() {
         {tips.map((val) => (
           <TipPercentageButton value={val} key={val} />
         ))}
+        <CustomTip />
       </div>
     </StyledTipSelection>
   );
