@@ -13,7 +13,7 @@ const StyledCalculatorContainer = styled.div`
 
 const CalculatorCard = styled(Card)`
   width: 50rem;
-  height: 2rem;
+  height: 27rem;
   padding: 2rem;
   display: flex;
   column-gap: 2.5rem;
