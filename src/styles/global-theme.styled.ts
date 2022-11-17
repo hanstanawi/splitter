@@ -9,6 +9,7 @@ const globalTheme: DefaultTheme = {
     lightGrey: 'hsl(189, 41%, 97%)',
     darkPrimary: 'hsl(183, 100%, 15%)',
     greyCyan: 'hsl(184, 14%, 56%)',
+    darkGreyCyan: 'hsl(186, 14%, 43%)',
   },
 };
 
