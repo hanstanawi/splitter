@@ -20,7 +20,7 @@ export const StyledTipPercentageButton = styled.button<StyledTipPercentageButton
   cursor: pointer;
   border: none;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   padding: 0.5rem 0;
   border-radius: 0.25rem;
 
@@ -50,7 +50,7 @@ function TipPercentageButton({ value }: TipPercentageCardProps) {
       type="button"
       onClick={selectTipHandler}
     >
-      <p>{`${value}%`}</p>
+      <span>{`${value}%`}</span>
     </StyledTipPercentageButton>
   );
 }

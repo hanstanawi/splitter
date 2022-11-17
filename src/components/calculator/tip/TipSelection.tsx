@@ -6,7 +6,7 @@ import TipPercentageButton from './TipPercentageButton';
 const StyledTipSelection = styled.div`
   .tip-label {
     font-weight: 700;
-    color: ${({ theme }) => theme.colors.greyCyan};
+    color: ${({ theme }) => theme.colors.darkGreyCyan};
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -21,8 +21,6 @@ const StyledTipSelection = styled.div`
 const tips = [5, 10, 15, 25, 50];
 
 function TipSelection() {
-  const [isCustomTip, setIsCustomTip] = useState(false);
-
   return (
     <StyledTipSelection>
       <p className="tip-label">Select Tip %</p>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { CalculatorContextProvider } from 'context/calculator-context';
 import { Card } from 'components/ui/Card';
-import InputForm from './InputForm';
+import InputForm from './form/InputForm';
 import ResultContainer from './result/ResultContainer';
 
 const StyledCalculatorContainer = styled.div`
@@ -13,7 +13,7 @@ const StyledCalculatorContainer = styled.div`
 
 const CalculatorCard = styled(Card)`
   width: 50rem;
-  height: 27rem;
+  height: 26rem;
   padding: 2rem;
   display: flex;
   column-gap: 2.5rem;
