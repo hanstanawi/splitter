@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { useAtom } from 'jotai';
 
+import { calculateTotalPricePerPerson } from 'helpers/math.helpers';
 import {
-  calculateTipPerPerson,
-  calculateTotalPricePerPerson,
-} from 'helpers/math.helpers';
-import { billAtom, peopleQtyAtom, tipAtom } from 'store';
+  billAtom,
+  peopleQtyAtom,
+  tipAtom,
+  tipPerPersonAtom,
+  totalPerPersonAtom,
+} from 'store';
 import ResetButton from './ResetButton';
 import ResultTemplate from './ResultTemplate';
 
@@ -28,16 +31,8 @@ const StyledResultContainer = styled.div`
 `;
 
 function ResultContainer() {
-  const [billValue] = useAtom(billAtom);
-  const [tipValue] = useAtom(tipAtom);
-  const [peopleQty] = useAtom(peopleQtyAtom);
-
-  const tipPerPerson = calculateTipPerPerson(billValue, tipValue, peopleQty);
-  const totalPerPerson = calculateTotalPricePerPerson(
-    tipPerPerson,
-    billValue,
-    peopleQty
-  );
+  const [tipPerPerson] = useAtom(tipPerPersonAtom);
+  const [totalPerPerson] = useAtom(totalPerPersonAtom);
 
   return (
     <StyledResultContainer>
