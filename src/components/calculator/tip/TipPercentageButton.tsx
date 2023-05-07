@@ -1,4 +1,5 @@
-import { useContextDispatch, useTip } from 'hooks/calculator.hooks';
+import { useAtom } from 'jotai';
+import { tipAtom } from 'store';
 import styled from 'styled-components';
 
 type StyledTipPercentageButtonProps = {
@@ -35,20 +36,15 @@ type TipPercentageCardProps = {
 };
 
 function TipPercentageButton({ value }: TipPercentageCardProps) {
-  const dispatch = useContextDispatch();
-  const currentTip = useTip();
+  const [tip, setTip] = useAtom(tipAtom);
 
-  const selected = currentTip === value;
-
-  const selectTipHandler = () => {
-    dispatch({ type: 'SET_TIP_PERCENTAGE', payload: value });
-  };
+  const selected = tip === value;
 
   return (
     <StyledTipPercentageButton
       selected={selected}
       type="button"
-      onClick={selectTipHandler}
+      onClick={() => setTip(value)}
     >
       <span>{`${value}%`}</span>
     </StyledTipPercentageButton>

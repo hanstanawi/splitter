@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import CustomTip from './CustomTip';
 import TipPercentageButton from './TipPercentageButton';

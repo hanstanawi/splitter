@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import {
-  useBillValue,
-  usePeopleQuantity,
-  useTip,
-} from 'hooks/calculator.hooks';
+import { useAtom } from 'jotai';
+
 import {
   calculateTipPerPerson,
   calculateTotalPricePerPerson,
 } from 'helpers/math.helpers';
+import { billAtom, peopleQtyAtom, tipAtom } from 'store';
 import ResetButton from './ResetButton';
 import ResultTemplate from './ResultTemplate';
 
@@ -30,9 +28,9 @@ const StyledResultContainer = styled.div`
 `;
 
 function ResultContainer() {
-  const billValue = useBillValue();
-  const tipValue = useTip();
-  const peopleQty = usePeopleQuantity();
+  const [billValue] = useAtom(billAtom);
+  const [tipValue] = useAtom(tipAtom);
+  const [peopleQty] = useAtom(peopleQtyAtom);
 
   const tipPerPerson = calculateTipPerPerson(billValue, tipValue, peopleQty);
   const totalPerPerson = calculateTotalPricePerPerson(

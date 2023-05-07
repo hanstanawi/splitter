@@ -3,6 +3,8 @@ import {
   useContextDispatch,
   usePeopleQuantity,
 } from 'hooks/calculator.hooks';
+import { useAtom, useSetAtom } from 'jotai';
+import { billAtom, peopleQtyAtom, resetValueAtom } from 'store';
 import styled from 'styled-components';
 
 type StyledResetButtonProps = {
@@ -36,19 +38,14 @@ const StyledResetButton = styled.button<StyledResetButtonProps>`
 `;
 
 function ResetButton() {
-  const billValue = useBillValue();
-  const peopleQuantity = usePeopleQuantity();
-  const dispatch = useContextDispatch();
+  const [billValue] = useAtom(billAtom);
+  const [peopleQuantity] = useAtom(peopleQtyAtom);
+  const resetValues = useSetAtom(resetValueAtom);
+
   const isDefaultState = !billValue && !peopleQuantity;
 
-  const resetHandler = () => {
-    dispatch({ type: 'SET_BILL_VALUE', payload: 0 });
-    dispatch({ type: 'SET_TIP_PERCENTAGE', payload: 0 });
-    dispatch({ type: 'SET_PEOPLE_QUANTITY', payload: 0 });
-  };
-
   return (
-    <StyledResetButton disabled={isDefaultState} onClick={resetHandler}>
+    <StyledResetButton disabled={isDefaultState} onClick={() => resetValues()}>
       RESET
     </StyledResetButton>
   );

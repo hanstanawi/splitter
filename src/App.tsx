@@ -1,3 +1,4 @@
+import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider } from 'styled-components';
 
 import CalculatorContainer from 'components/calculator/CalculatorContainer';
@@ -8,13 +9,15 @@ import Layout from 'components/layout/Layout';
 
 function App() {
   return (
-    <ThemeProvider theme={globalTheme}>
-      <GlobalStyles />
-      <Layout>
-        <HeaderTitle />
-        <CalculatorContainer />
-      </Layout>
-    </ThemeProvider>
+    <JotaiProvider>
+      <ThemeProvider theme={globalTheme}>
+        <GlobalStyles />
+        <Layout>
+          <HeaderTitle />
+          <CalculatorContainer />
+        </Layout>
+      </ThemeProvider>
+    </JotaiProvider>
   );
 }
 
