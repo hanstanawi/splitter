@@ -27,7 +27,9 @@ const StyledResetButton = styled.button<StyledResetButtonProps>`
   font-family: sans-serif;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme, disabled }) => {
+      return disabled ? theme.colors.primary : theme.colors.secondary;
+    }};
     color: ${({ theme }) => theme.colors.darkPrimary};
   }
 `;
