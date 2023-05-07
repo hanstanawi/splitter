@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledTitle = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   img {
     width: 100%;

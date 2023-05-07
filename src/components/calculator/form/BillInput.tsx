@@ -11,10 +11,12 @@ function BillInput() {
   const billValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
     const isValidNumber = validateIsValidNumber(inputText);
+
     if (isValidNumber) {
+      console.log(inputText);
       dispatch({
         type: 'SET_BILL_VALUE',
-        payload: Number(inputText),
+        payload: parseFloat(inputText),
       });
     }
   };

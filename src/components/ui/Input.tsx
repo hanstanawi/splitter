@@ -9,6 +9,7 @@ const Input = styled.input`
   text-align: right;
   color: ${({ theme }) => theme.colors.darkPrimary};
   font-weight: 600;
+  cursor: pointer;
 
   &.default-value {
     color: ${({ theme }) => theme.colors.greyCyan};
