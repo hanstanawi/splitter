@@ -1,11 +1,6 @@
-import {
-  useBillValue,
-  useContextDispatch,
-  usePeopleQuantity,
-} from 'hooks/calculator.hooks';
+import styled from 'styled-components';
 import { useAtom, useSetAtom } from 'jotai';
 import { billAtom, peopleQtyAtom, resetValueAtom } from 'store';
-import styled from 'styled-components';
 
 type StyledResetButtonProps = {
   disabled: boolean;
