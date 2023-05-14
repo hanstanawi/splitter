@@ -1,14 +1,14 @@
 import cx from 'classnames';
 import { ChangeEvent, useState } from 'react';
+import { useAtom } from 'jotai';
 
 import Input from 'components/ui/Input';
+import { peopleQtyAtom } from 'store';
 import { validateIsValidNumber } from 'helpers/string.helpers';
-import { useContextDispatch, usePeopleQuantity } from 'hooks/calculator.hooks';
 
 function PeopleQuantityInput() {
   const [error, setError] = useState<string | null>(null);
-  const dispatch = useContextDispatch();
-  const peopleQuantity = usePeopleQuantity();
+  const [peopleQty, setPeopleQty] = useAtom(peopleQtyAtom);
 
   const peopleQuantityChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
@@ -16,16 +16,10 @@ function PeopleQuantityInput() {
     if (isValidNumber) {
       const numberInput = Number(e.target.value);
       if (numberInput > 0) {
-        dispatch({
-          type: 'SET_PEOPLE_QUANTITY',
-          payload: numberInput,
-        });
+        setPeopleQty(numberInput);
         setError(null);
       } else {
-        dispatch({
-          type: 'SET_PEOPLE_QUANTITY',
-          payload: numberInput,
-        });
+        setPeopleQty(numberInput);
         setError(`Can't be zero`);
       }
     }
@@ -39,8 +33,8 @@ function PeopleQuantityInput() {
         type="text"
         name="people"
         onChange={peopleQuantityChangeHandler}
-        className={cx(!peopleQuantity && 'default-value')}
-        value={peopleQuantity}
+        className={cx(!peopleQty && 'default-value')}
+        value={peopleQty}
       />
     </div>
   );

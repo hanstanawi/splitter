@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { CalculatorContextProvider } from 'context/calculator-context';
 import { Card } from 'components/ui/Card';
 import InputForm from './form/InputForm';
 import ResultContainer from './result/ResultContainer';
@@ -13,7 +12,7 @@ const StyledCalculatorContainer = styled.div`
 
 const CalculatorCard = styled(Card)`
   width: 50rem;
-  height: 26rem;
+  height: 27rem;
   padding: 2rem;
   display: flex;
   column-gap: 2.5rem;
@@ -23,10 +22,8 @@ function CalculatorContainer() {
   return (
     <StyledCalculatorContainer>
       <CalculatorCard>
-        <CalculatorContextProvider>
-          <InputForm />
-          <ResultContainer />
-        </CalculatorContextProvider>
+        <InputForm />
+        <ResultContainer />
       </CalculatorCard>
     </StyledCalculatorContainer>
   );

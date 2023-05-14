@@ -8,7 +8,8 @@ const StyledResultTemplate = styled.div`
 
   .label {
     p.title {
-      font-size: 1rem;
+      font-weight: 600;
+      font-size: 14px;
       color: ${({ theme }) => theme.colors.white};
       margin-bottom: 0.25rem;
     }

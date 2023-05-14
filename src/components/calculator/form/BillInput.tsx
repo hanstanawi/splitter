@@ -1,21 +1,20 @@
 import cx from 'classnames';
 import { ChangeEvent } from 'react';
+import { useAtom } from 'jotai';
 
 import Input from 'components/ui/Input';
-import { useBillValue, useContextDispatch } from 'hooks/calculator.hooks';
+import { billAtom } from 'store';
 import { validateIsValidNumber } from 'helpers/string.helpers';
 
 function BillInput() {
-  const billValue = useBillValue();
-  const dispatch = useContextDispatch();
+  const [billValue, setBillValue] = useAtom(billAtom);
+
   const billValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const inputText = e.target.value;
     const isValidNumber = validateIsValidNumber(inputText);
+
     if (isValidNumber) {
-      dispatch({
-        type: 'SET_BILL_VALUE',
-        payload: Number(inputText),
-      });
+      setBillValue(parseFloat(inputText));
     }
   };
 
