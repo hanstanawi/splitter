@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import iconPerson from 'assets/images/icon-person.svg';
 import { ChangeEvent, useState } from 'react';
 import { useAtom } from 'jotai';
 
@@ -26,9 +27,10 @@ function PeopleQuantityInput() {
   };
 
   return (
-    <div className="bill-input">
+    <div className="input-container">
       <label htmlFor="bill">Number of People</label>
       {error && <p>{error}</p>}
+      <img src={iconPerson} alt="icon-person" className="icon" />
       <Input
         type="text"
         name="people"

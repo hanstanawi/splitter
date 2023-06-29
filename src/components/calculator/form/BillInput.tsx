@@ -20,7 +20,7 @@ function BillInput() {
   };
 
   return (
-    <div className="bill-input">
+    <div className="input-container">
       <label htmlFor="bill">Bill</label>
       <img src={iconDollar} className="icon" alt="bill-icon" />
       <Input

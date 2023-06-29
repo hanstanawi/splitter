@@ -12,7 +12,7 @@ const StyledInputForm = styled.div`
   justify-content: space-between;
   padding: 0.75rem 0;
 
-  .bill-input {
+  .input-container {
     font-size: 1rem;
     width: 100%;
     display: flex;
@@ -23,13 +23,13 @@ const StyledInputForm = styled.div`
     position: relative;
   }
 
-  .bill-input .icon {
+  .input-container .icon {
     position: absolute;
     width: 20px;
     height: 20px;
     object-fit: contain;
     left: 15px;
-    top: 2.5rem;
+    top: 2.6rem;
   }
 `;
 
