@@ -1,14 +1,14 @@
+import { atom } from 'jotai';
 import {
   calculateTipPerPerson,
   calculateTotalPricePerPerson,
 } from 'helpers/math.helpers';
-import { atom } from 'jotai';
 
 export const billAtom = atom(0);
 export const tipAtom = atom(0);
 export const peopleQtyAtom = atom(0);
 
-export const resetValueAtom = atom(null, (get, set) => {
+export const resetValueAtom = atom(null, (_get, set) => {
   set(billAtom, 0);
   set(tipAtom, 0);
   set(peopleQtyAtom, 0);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledCustomTip = styled.button`
+const StyledCustomTip = styled.input`
   background-color: ${({ theme }) => {
     return theme.colors.lightGrey;
   }};
@@ -21,7 +21,7 @@ const StyledCustomTip = styled.button`
 `;
 
 function CustomTip() {
-  return <StyledCustomTip type="button">Custom</StyledCustomTip>;
+  return <StyledCustomTip placeholder="Custom" />;
 }
 
 export default CustomTip;

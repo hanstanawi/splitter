@@ -14,6 +14,14 @@ const Input = styled.input`
   &.default-value {
     color: ${({ theme }) => theme.colors.greyCyan};
   }
+
+  &:active {
+    border-color: ${({ theme }) => theme.colors.darkPrimary} !important;
+  }
+
+  &:focus-visible {
+    border-color: ${({ theme }) => theme.colors.darkPrimary} !important;
+  }
 `;
 
 export default Input;

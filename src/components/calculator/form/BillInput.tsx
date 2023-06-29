@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import iconDollar from 'assets/images/icon-dollar.svg';
 import { ChangeEvent } from 'react';
 import { useAtom } from 'jotai';
 
@@ -19,8 +20,9 @@ function BillInput() {
   };
 
   return (
-    <div className="bill-input">
+    <div className="input-container">
       <label htmlFor="bill">Bill</label>
+      <img src={iconDollar} className="icon" alt="bill-icon" />
       <Input
         type="text"
         name="bill"
