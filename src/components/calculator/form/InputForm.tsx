@@ -20,6 +20,16 @@ const StyledInputForm = styled.div`
     row-gap: 0.25rem;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.darkGreyCyan};
+    position: relative;
+  }
+
+  .bill-input .icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    left: 15px;
+    top: 2.5rem;
   }
 `;
 

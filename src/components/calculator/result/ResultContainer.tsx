@@ -1,14 +1,7 @@
 import styled from 'styled-components';
 import { useAtom } from 'jotai';
 
-import { calculateTotalPricePerPerson } from 'helpers/math.helpers';
-import {
-  billAtom,
-  peopleQtyAtom,
-  tipAtom,
-  tipPerPersonAtom,
-  totalPerPersonAtom,
-} from 'store';
+import { tipPerPersonAtom, totalPerPersonAtom } from 'store';
 import ResetButton from './ResetButton';
 import ResultTemplate from './ResultTemplate';
 
